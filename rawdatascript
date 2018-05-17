@@ -1,0 +1,56 @@
+#Keeping the raw data in tact
+raw_data <- "DOUGLAS90088888;BLAHBLAH;LKJASDLFK;HELLO;SAMPLE_TEST;5.55;1.4;SE=5;HELLO;"
+raw_data
+gsub(";.*", "", raw_data) -> enodeb_name
+enodeb_name
+raw_data
+#Changing variable becuase from here on our I will be cleaning the data from original form
+gsub("^.*?\\;","", raw_data) -> keep_cleaning
+keep_cleaning 
+gsub(";.*", "", keep_cleaning) -> blahblah
+blahblah
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> lkjasdlfk
+lkjasdlfk
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> hello
+hello
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> sample_test
+sample_test
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> tx_pwr
+as.numeric(tx_pwr) -> tx_pwr
+tx_pwr
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> vswr
+as.numeric(vswr) -> vswr
+vswr
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> other_info
+other_info
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+gsub(";.*", "", keep_cleaning) -> hello_i_did_it
+hello_i_did_it
+gsub("^.*?\\;","", keep_cleaning) -> keep_cleaning
+keep_cleaning
+
+final_data <- data.frame(enodeb_name,
+                         blahblah, 
+                         lkjasdlfk, 
+                         hello, 
+                         sample_test, 
+                         tx_pwr,
+                         vswr,
+                         other_info,
+                         hello_i_did_it)
+
+
+plot(vswr)
